@@ -26,6 +26,7 @@ PackedM31 PackedM31::one()
 
 PackedM31 PackedM31::random()
 {
+    // note: this function may not be uniformly random.
     uint32x4_t x;
     uint32_t rand_vector[4];
     for (int i = 0; i < 4; i++)

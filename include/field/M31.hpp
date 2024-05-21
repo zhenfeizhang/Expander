@@ -99,6 +99,19 @@ public:
 
     // using default exp implementation in BaseField without any override
 
+
+    // overloading inv function with constant e
+    M31 inv() const {
+        if (this->x == 0) return M31(0);
+
+        // x^{p - 2}
+        // todo: consider to use optimizations in 
+        // https://github.com/Plonky3/Plonky3/blob/main/mersenne-31/src/mersenne_31.rs#L240
+        Scalar e = 2147483646;
+        return exp(e);
+    }
+
+
     void to_bytes(uint8* output) const
     {
         memcpy(output, this, sizeof(*this));
